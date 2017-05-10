@@ -1,0 +1,33 @@
+const int trig = 33;     // trig of HC-SR04
+const int echo = 51;     // echo of HC-SR04
+ 
+void setup()
+{
+    Serial.begin(9600);     // erial with baudrate 9600
+    pinMode(trig,OUTPUT);   // trig is output
+    pinMode(echo,INPUT);    // echo is input
+}
+ 
+void loop()
+{
+    unsigned long duration; // time variable 
+    int distance;           
+    
+    /* pulse from trig */
+    digitalWrite(trig,0);   // trig off
+    delayMicroseconds(2);
+    digitalWrite(trig,1);  
+    delayMicroseconds(5);   // pulse 's length is 5 microSeconds
+    digitalWrite(trig,0);   // trig off
+    
+    /* caculate time */
+    // calculate the width HIGH of echo. 
+    duration = pulseIn(echo,HIGH);  
+    // caculate distance.
+    distance = int(duration/2/29.412);
+    
+    /* print to Serial Monitor */
+    Serial.print(distance);
+    Serial.println("cm");
+    delay(2000);
+}
