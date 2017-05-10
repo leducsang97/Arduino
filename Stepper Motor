@@ -1,0 +1,48 @@
+int blue =8;
+int pink =9;
+int yellow=10;
+int orange=11;
+
+int currentStep = 0;
+
+void setup(){
+  pinMode(blue,OUTPUT);
+  pinMode(pink,OUTPUT);
+  pinMode(yellow,OUTPUT);
+  pinMode(orange,OUTPUT);
+
+  digitalWrite(blue,LOW);
+  digitalWrite(pink,LOW);
+  digitalWrite(yellow,LOW);
+  digitalWrite(orange,LOW);
+}
+void loop(){
+  switch (currentStep){
+    case 0:
+  digitalWrite(blue,HIGH);
+  digitalWrite(pink,LOW);
+  digitalWrite(yellow,LOW);
+  digitalWrite(orange,LOW);
+    break;
+    case 1:
+  digitalWrite(blue,LOW);
+  digitalWrite(pink,HIGH);
+  digitalWrite(yellow,LOW);
+  digitalWrite(orange,LOW);
+    break;
+    case 2:
+  digitalWrite(blue,LOW);
+  digitalWrite(pink,LOW);
+  digitalWrite(yellow,HIGH);
+  digitalWrite(orange,LOW);
+    break;
+    case 3:
+  digitalWrite(blue,LOW);
+  digitalWrite(pink,LOW);
+  digitalWrite(yellow,LOW);
+  digitalWrite(orange,HIGH);
+    break;
+  }
+  currentStep = ( ++currentStep<4)? currentStep:0;
+  delay(2);
+}
