@@ -1,0 +1,34 @@
+ #include <AFMotor.h>
+ 
+AF_DCMotor motor1(4, MOTOR12_64KHZ);  
+AF_DCMotor motor2(3, MOTOR12_64KHZ);
+void setup() {
+    Serial.begin(9600); //open Serial
+    Serial.println("quay");
+    motor1.setSpeed(200);//set speed
+    motor2.setSpeed(200);
+   
+ 
+}  
+ 
+void loop() {  
+ 
+    Serial.print("tien");     
+    
+    motor1.run(FORWARD);      // go forward 
+    motor2.run(FORWARD);
+    delay(1000 );
+        
+    motor1.run(RELEASE);
+    motor2.run(RELEASE);
+    delay(1000);     
+    
+    motor1.run(BACKWARD);      // go backward
+    motor2.run(BACKWARD);
+    delay(1000);  
+    
+    motor1.run(RELEASE);
+    motor2.run(RELEASE);
+    delay(1000);
+ 
+}
