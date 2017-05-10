@@ -1,0 +1,33 @@
+byte ledPin[] = {2,3,4,5,6,7,8,9}; //
+byte pinCount;
+int brightness=0;
+int fadeAmount = 10;
+
+void setup() {
+  pinCount = sizeof(ledPin); 
+  for (int i=0;i<pinCount;i++) {
+    pinMode(ledPin[i],OUTPUT);  
+    digitalWrite(ledPin[i],LOW); //LED is off as standard
+  }
+}
+void loop() {
+
+  for (int i=0; i < pinCount; i++) {
+  while ( brightness <= 0 || brightness <= 255){
+     analogWrite(ledPin[i], brightness);    
+  brightness = brightness + fadeAmount;
+  if (brightness == 0 || brightness == 255) {
+    fadeAmount = -fadeAmount ;
+  }
+    delay(30);
+  }
+  }
+  
+  /*
+    Tắt tuần tự các đèn LED
+  */
+  for (int i = 0;i < pinCount; i += 1) {
+    digitalWrite(ledPin[i],LOW); // led off
+    delay(500); // delay to wait the led off
+  }
+}
